@@ -1,0 +1,38 @@
+<!--<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css">
+
+<p></p>
+<!--<form action="/contact" class="new_contact" id="new_contact" method="post">
+-->
+
+<% if flash[:contact_error] %>
+    <div class="alert alert-error" style="margin-top: -40px; margin-bottom: 40px">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:contact_error] %>
+    </div>
+<% end %>
+
+
+<form style="margin-top: -2% ;margin-left: 25%; margin-right: auto; background-color: transparent; border-color: transparent" class="well span8" method="post" action="/contact" accept-charset="UTF-8">
+
+
+  <div class="row" style="margin-left: 20%; margin-top: -5%">
+    <h2 style="color: darkslategrey; font-family: Gabriela;">Contact Me</h2>
+
+    <hr style="margin-right: 39%; background-color: #000000; border-color: darkslategrey"/>
+
+    <div class="span3" style="margin-left: 0% ;margin-top: 5%;">
+      <input style="margin-top: 5%" id="contact_name" type="text" class="span5" placeholder="Your Full Name *" name="contact[name]" autofocus="true">
+
+      <input style="margin-top: 5% " id="contact_email" type="email" class="span5" name="contact[email]" placeholder="Your email address *">
+
+      <textarea name="contact[message]" id="contact_message" class="input-xlarge span5" rows="20" style="margin-top: 5% ;height: 120px" placeholder="Please leave your message here. *"></textarea>
+      <label style="font-family: Georgia; color: lightslategray; font-size: 11px">* : These fields are necessary to be filled.</label>
+
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+
+      <button name="commit" value="Send" type="submit" class="btn" style="font-family: Gabriela; color: darkslategrey; margin-left: 320px">Send</button>
+
+    </div>
+  </div>
+</form>
+<!--</form> -->

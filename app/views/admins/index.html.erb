@@ -1,0 +1,13 @@
+
+<% if flash[:success] %>
+<div class="alert alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <%= flash[:success] %>
+</div>
+<% end %>
+
+<p> </p>
+<div class="btn-group">
+  <button class="btn" onclick="window.location.href = '/blogs/new'">New Blog</button>
+</div>
+

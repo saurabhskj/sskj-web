@@ -1,0 +1,121 @@
+diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
+index 06beb90..2b8e089 100644
+--- a/app/views/layouts/application.html.erb
++++ b/app/views/layouts/application.html.erb
+@@ -1,73 +1,46 @@
+ <!DOCTYPE html>
+-<html>
+-<head>
+-  <title>Saurabh</title>
+-  <%= stylesheet_link_tag    "application", :media => "all" %>
+-  <%= javascript_include_tag "application" %>
+-  <%= csrf_meta_tags %>
+-</head>
+-<body>
+-
+-
+-<div class="navbar">
+-  <div class="navbar navbar-inverse">
+-    <div class="navbar-inner">
+-      <!-- <a class="brand" href="#">Title</a> -->
+-
+-      <ul class="nav">
+-
+-        <li><a href="<%= root_path %>">Home</a></li>
+-        <li class="divider-vertical"></li>
+-        <li><a href="<%= blogs_path %>">Blog</a></li>
+-        <li class="divider-vertical"></li>
+-        <li><a href="<%= %>">Projects</a></li>
+-      </ul>
+-      <ul class="nav pull-right">
+-        <li><a href="<%= %>">Contact Me</a></li>
+-        <li class="divider-vertical"></li>
+-        <% unless user_signed_in? %>
+-        <li class="dropdown">
+-          <a href="" class="dropdown-toggle" data-toggle="dropdown">
+-            Sign In
+-            <b class="caret"></b>
+-          </a>
+-          <ul class="dropdown-menu">
+-            <li><a href="<%= new_admin_session_path %>">Admin</a> </li>
+-            <li><a href="<%= new_user_session_path %>">User</a> </li>
+-          </ul>
++<html lang="en">
++  <head>
++    <meta charset="utf-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++
++    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
++
++    <%= stylesheet_link_tag    "application" %>
++    <%= javascript_include_tag "vendor/modernizr" %>
++    <%= csrf_meta_tags %>
++  </head>
++
++  <body>
++
++    <%= yield %>
++    <%= javascript_include_tag "application" %>
++
++    <nav class="top-bar">
++      <ul class="title-area">
++        <li class="name">
++        <li><a href= "<%= root_path %>">Home</a></li>
++        <li class="divider"></li>
++        <li><a href= "<%= blogs_path %>">Blog</a></li>
++        <li class="divider"></li>
++        <li><a href= "<%=  %>">Projects</a></li>
++        <li class="divider"></li>
+         </li>
+-        <li class="divider-vertical"></li>
+-
+-        <li class="dropdown">
+-          <a href="" class="dropdown-toggle" data-toggle="dropdown">
+-            Sign Up
+-            <b class="caret"></b>
+-          </a>
+-          <ul class="dropdown-menu">
+-            <li><a href="<%= new_admin_registration_path %>">Admin</a> </li>
+-            <li><a href="<%= new_user_registration_path %>">User</a> </li>
+-          </ul>
+-        </li>
+-
+-        <% else %>
+-            <li class="dropdown">
+-              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+-                User
+-                <b class="caret"></b>
+-              </a>
+-              <ul class="dropdown-menu">
+-                <li><a href="<%= edit_user_registration_path %>">Edit Profile</a> </li>
+-                <li><a href="<%= destroy_user_session_path %>">Sign Out</a> </li>
+-              </ul>
+-            </li>
+-        <% end %>
+-
+       </ul>
+-    </div>
+-  </div>
+-</div>
+-
+-<%= yield %>
+ 
+-</body>
+-</html>
++      <section class="top-bar-section">
++        <ul class="right">
++          <li class="divider"></li>
++          <li><%= link_to "Sign In", products_path %></li>
++          <li class="divider"></li>
++          <li><%= link_to "Price List" %></li>
++          <li class="divider"></li>
++          <li><%= link_to "Contact Us" %></li>
++          <li class="divider"></li>
++          <li><%= link_to "Cart" %></li>
++        </ul>
++        </div>
++      </section>
++    </nav>
++  </body>
++</html>
+\ No newline at end of file

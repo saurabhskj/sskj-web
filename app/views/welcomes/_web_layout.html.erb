@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title><%= content_for?(:title) ? yield(:title) : "Saurabh Jain" %></title>
+
+  <%= stylesheet_link_tag    "application", :media => 'all' %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48786112-1', 'saurabhj.net');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body id="background1">
+
+<script type="text/javascript">
+    WebFontConfig = {
+        google: { families: [ 'Allura::latin', 'Gilda Display', 'Gabriela', 'Esteban', 'Droid Serif','Fanwood Text' ] }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })(); </script>
+
+<div id="wrapper">
+
+  <div id="content_wrapper">
+
+    <div id="content_inner_wrapper">
+
+  <div class="navbar navbar-fixed-top" >
+  <div id="background2" class="navbar-inner" style="height: 100px">
+    <!-- <a class="brand" href="#">Title</a> -->
+    <div class="container" style="margin-top: 30px">
+      <a class="brand" href="/" style="font-size: 45px; font-family: 'Esteban'; color: lightgrey; margin-left: -130px;" >
+        Saurabh Jain
+      </a>
+      <ul class="nav pull-right" style= "font-size: 14px; font-family: 'Gilda Display';margin-right: -130px; align-self: auto">
+
+        <li><a href= "<%= blogs_path %>" style="font-size: larger;">Blog</a></li>
+        <li><a href= "<%= projects_path  %>" style="font-size: larger">Projects</a></li>
+
+        <li><a href="<%= contact_path%>" style="font-size: larger">Contact</a></li>
+        <% unless user_signed_in? or admin_signed_in? %>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: medium">
+                Sign In
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= new_user_session_path %>" style="font-size: 14px">User</a> </li>
+                <li><a href="/auth/facebook" style="font-size: 14px" id="sign_in">Facebook Login</a> </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: medium">
+                Sign Up
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= new_user_registration_path %>" style="font-size: 14px">User</a> </li>
+                <li><a href="/auth/facebook" style="font-size: 14px" id="sign_in">Facebook Login</a> </li>
+              </ul>
+            </li>
+
+        <% else %>
+            <li class="dropdown">
+                <% if user_signed_in? %>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: larger">
+                    <%= current_user.name %>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<%= edit_user_registration_path %>" style="font-size: 14px">Edit Profile</a> </li>
+                    <li><a href="<%= destroy_user_session_path %>" style="font-size: 14px">Sign Out</a> </li>
+                  </ul>
+
+            <% else %>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown" style="font-size: larger">
+                    <%= current_admin.name %>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="<%= new_blog_path %>" style="font-size: 14px">Create Blog</a> </li>
+                    <li><a href="<%= edit_admin_registration_path %>" style="font-size: 14px">Edit Profile</a> </li>
+                    <li><a href="<%= destroy_admin_session_path %>" style="font-size: 14px">Sign Out</a> </li>
+                  </ul>
+            <% end %>
+
+            </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="padding-top: 150px"></div>
+
+<%= yield %>
+
+</div>
+</div>
+</div>
+
+<!--
+<div id="footer_wrapper">
+
+  <div id="footer_inner_wrapper">
+
+    <div id="background2" style="height: 42px; width: 100%">The footer's content</div>
+
+  </div>
+
+</div>
+-->
+
+<div class="panel panel-default" style="margin-top: -110px">
+ <!-- <div class="line" style="margin-left: 32%; padding-left: 30%"></div> -->
+  <div class="panel-body" style="padding-left: 45%; padding-top: 50px;">
+    <a href="https://facebook.com/saurabhskj.94" target="_blank">
+      <img style="height: auto; width: auto; max-height: 35px;" src="facebook.png">
+    </a>
+
+    <a href="https://www.google.com/+SaurabhJain12" style="padding-left: 20px" target="_blank">
+      <img style="height: auto; width: auto; max-height: 35px;" src="g+.png">
+    </a>
+
+    <a href="http://in.linkedin.com/in/saurabh12/" style="padding-left: 20px" target="_blank">
+      <img style="height: auto; width: auto; max-height: 35px;" src="linkedin.png">
+    </a>
+
+  </div>
+  <div class="panel-footer" style="padding-left: 39%; padding-top: 3px; font-family: 'Droid Serif'  ; font-size: 15px">Copyright© 2014. Saurabh Jain (<a href="mailto:c@saurabhj.net" style="color: #002a80" target="_blank">c@saurabhj.net</a>) </div>
+</div>
+
+
+</body>
+
+</html>
